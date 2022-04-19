@@ -1,0 +1,7 @@
+2022-04-18 12:22:25,556 WARNING:Not Found: /migrate.py
+2022-04-18 12:23:47,748 INFO:/home/developer/PycharmProjects/python-djangoapp/djangoapp/views.py changed, reloading.
+2022-04-19 05:33:22,524 WARNING:Not Found: /favicon.ico
+2022-04-19 05:33:39,895 WARNING:Not Found: /migrate.py
+2022-04-19 05:35:12,616 WARNING:Not Found: /migrate.py
+2022-04-19 06:31:20,656 INFO:/home/developer/PycharmProjects/python-djangoapp/djangoapp/models.py changed, reloading.
+2022-04-19 06:37:19,131 INFO:/home/developer/PycharmProjects/python-djangoapp/djangoapp/serializer.py changed, reloading.
