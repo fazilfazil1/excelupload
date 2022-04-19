@@ -63,7 +63,7 @@ def upload_file(request):
 
 #     cust_obj.file=path
 #     cust_obj.save()
-#
+#xcvgkfxcbjhnkml;,'.
 #     print('**',path)
 #     # df = pd.read_excel('file', engine='openpyxl')
 #     # url = "https://api.bigcommerce.com/stores/b5ajmj9rbq/v3/customers"
