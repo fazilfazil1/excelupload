@@ -1,14 +1,83 @@
 {% extends 'base.html' %}
 {% block content %}
-<html>
-<body>
-<form action="/upload_file/" method="post" enctype="multipart/form-data" name="form1" id="form1" >
+<div class="headerbox">
+  <h3 class="main-head"> Upload your excel file here</h3>
+</div>
+<div class="container">
+  <form action="/upload_file/" method="post" enctype="multipart/form-data" name="form1" id="form1">
   {% csrf_token %}
 <div class="input-group mb-3">
-  <input type="file" name="filefield" class="form-control" id="filefield">
-  <input type="submit" class="btn btn-info" id="button" name="button" value="Upload" >
+
+<table style="width:50%">
+  <tr>
+    <th>Big_name</th>
+    <th>excel_name</th>
+  </tr>
+  <tr>
+    <td>company</td>
+    <td><select name="select">
+      <option value="volvo">company</option>
+      <option value="saab">c_ompany</option>
+      <option value="saab">cmpany</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td>first_name</td>
+     <td><select  name="select1">
+      <option value="volvo">fname</option>
+        <option value="volvo">firstname</option>
+       <option value="volvo">f_name</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td>last_name</td>
+      <td><select  name="select2">
+      <option value="volvo">select</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td>phone</td>
+      <td><select>
+      <option value="volvo">select</option>
+    </select></td>
+  </tr>
+  <tr>
+    <td>email</td>
+      <td><select>
+      <option value="volvo">select</option>
+    </select></td>
+  </tr>
+</table>
+   <hr>
+  <input type="file" name="filefield">
+  <input type="submit"  value="Upload" >
 </div>
 </form>
-</body>
-</html>
+</div>
+
+<style>
+table, th, td {
+  border: 1px dotted black;
+}
+  .container
+    {
+      border: 3px dotted black;
+      background-color:#f5f5f7;
+      padding:80px 30px;
+      margin:0% 10%;
+    }
+.headerbox
+    {
+     text-align:center;
+     padding:30px;
+    }
+ .main-head{
+    font-size: 50px;
+    text-transform: uppercase;
+    color:#060910;
+    }
+}
+</style>
 {% endblock %}
+
+
