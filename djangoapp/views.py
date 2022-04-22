@@ -27,7 +27,7 @@ def upload_file(request):
     for index, row in df.iterrows():
         payload = [{
             "company": company,
-            "first_name": first_name,
+            "first_name": first_name, 
             "last_name": last_name,
             "phone": phone,
             "email": email,
