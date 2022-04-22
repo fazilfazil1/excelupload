@@ -17,13 +17,13 @@ def home(request):
 def upload_file(request):
     file = request.FILES['filefield']
     df = pd.read_excel(file, engine='openpyxl')
-    print(df)
     url = "https://api.bigcommerce.com/stores/b5ajmj9rbq/v3/customers"
-    company=request.POST['select1']
-    first_name = request.POST['select2']
-    last_name = request.POST['select3']
-    phone = request.POST['select4']
-    email = request.POST['select5']
+    return render(request,'dropdown.html',{'allcolumns':list(df.columns)})
+    company=request.POST['']
+    first_name = request.POST['']
+    last_name = request.POST['']
+    phone = request.POST['']
+    email = request.POST['']
     for index, row in df.iterrows():
         payload = [{
             "company": company,
