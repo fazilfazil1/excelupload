@@ -1,17 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
-
-<select> 
-    <option>
         <ul>
-            {% for column in allcolumns %} 
+            {% for column in allcolumns %}
             <li>
                {{column}}
             </li>
-            {% endfor %} 
+            {% endfor %}
             </ul>
-    </option>
-</select>
+
 
 
 {% endblock %}

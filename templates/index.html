@@ -15,42 +15,32 @@
   </tr>
   <tr>
     <td>company</td>
-    <td><select name="select">
-      <option value="volvo">company</option>
-      <option value="saab">c_ompany</option>
-      <option value="saab">cmpany</option>
-    </select></td>
+    <td>
+      <select>
+       <option>select</option>
+      </select>
+    </td>
   </tr>
   <tr>
     <td>first_name</td>
-     <td><select  name="select1">
-      <option value="volvo">fname</option>
-        <option value="volvo">firstname</option>
-       <option value="volvo">f_name</option>
-    </select></td>
-  </tr>
-  <tr>
-    <td>last_name</td>
-      <td><select  name="select2">
-      <option value="volvo">select</option>
-    </select></td>
-  </tr>
-  <tr>
-    <td>phone</td>
-      <td><select>
-      <option value="volvo">select</option>
-    </select></td>
-  </tr>
-  <tr>
-    <td>email</td>
-      <td><select>
-      <option value="volvo">select</option>
-    </select></td>
+      <td>
+            <select>
+              <option>
+                  <ul>
+                      {% for column in allcolumns %}
+                      <li>
+                          {{column}}
+                      </li>
+                      {% endfor %}
+                  </ul>
+              </option>
+          </select>
+      </td>
   </tr>
 </table>
    <hr>
   <input type="file" name="filefield">
-  <input type="submit"  value="Upload" >
+  <input type="submit"  value="Upload">
 </div>
 </form>
 </div>
@@ -76,7 +66,6 @@ table, th, td {
     text-transform: uppercase;
     color:#060910;
     }
-}
 </style>
 {% endblock %}
 
