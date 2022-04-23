@@ -1,10 +1,161 @@
 {% extends 'base.html' %}
 {% block content %}
-        <ul>
+<div style="display:flex;gap:10px">
+    <h3 style="color:#000080">Match The Names Left And  Right</h3>
+    <input class="btn" type="button" value="Upload">
+    <input class="btn" type="button" value="Back">
+</div>
+
+<hr>
+<table style="width:50%">
+    <tr>
+        <td>company</td>
+        <td><select name="select"  class="form-control" id="select">
+            <option>select</option>
             {% for column in allcolumns %}
-            <li>
-               {{column}}
-            </li>
+               <option> {{column}}</option>
             {% endfor %}
-            </ul>
+        </select>
+        </td>
+    </tr>
+    <tr>
+    <td>first_name</td>
+    <td><select name="select2"  class="form-control" id="select2">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option> {{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+    <tr>
+    <td>last_name </td>
+    <td>
+      <select name="select3"  class="form-control" id="select3">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option>{{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+  </tr>
+    <tr>
+    <td>phone</td>
+    <td>
+      <select  name="select4"  class="form-control" id="select4">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option>{{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+  </tr>
+    <tr>
+    <td>email</td>
+    <td>
+      <select>
+          <option  name="select5"  class="form-control" id="select5">select</option>
+          {% for column in allcolumns %}
+               <option> {{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+  </tr>
+    <tr style="text-decoration:underline;color:	#000080;font-size:20px;">
+         <td>address:</td>
+    </tr>
+    <tr>
+    <td>first_name</td>
+    <td>
+      <select  name="select6"  class="form-control" id="select6">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option>{{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+    <tr>
+    <td>city</td>
+    <td>
+      <select  name="select7"  class="form-control" id="select7">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option> {{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+    <tr>
+    <td>country_code</td>
+    <td>
+      <select name="select8"  class="form-control" id="select8">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option> {{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+    <tr>
+    <td>last_name</td>
+    <td>
+      <select name="select9"  class="form-control" id="select9">
+          <option >select</option>
+          {% for column in allcolumns %}
+               <option> {{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+    <tr>
+    <td>address1</td>
+    <td>
+      <select name="select-10"  class="form-control" id="select-10">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option> {{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+    <tr>
+    <td>postal_code</td>
+    <td>
+      <select name="select-11"  class="form-control" id="select-11">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option>{{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+    <tr>
+    <td>state_or_province</td>
+    <td>
+      <select name="select-12"  class="form-control" id="select-12">
+          <option>select</option>
+          {% for column in allcolumns %}
+               <option> {{column}}</option>
+          {% endfor %}
+      </select>
+    </td>
+    </tr>
+</table>
+<style>
+    .btn
+    {
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 8px 2px;
+      cursor: pointer;
+      background-color: #4CAF50; /* Green */
+      padding: 2px 14px;
+    }
+
+</style>
 {% endblock %}

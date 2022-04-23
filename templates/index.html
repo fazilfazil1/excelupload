@@ -1,60 +1,23 @@
 {% extends 'base.html' %}
 {% block content %}
 <div class="headerbox">
-  <h3 class="main-head"> Upload your excel file here</h3>
+    <h3 class="main-head"> Upload your excel file here</h3>
 </div>
 <div class="container">
-  <form action="/upload_file/" method="post" enctype="multipart/form-data" name="form1" id="form1">
-  {% csrf_token %}
-<div class="input-group mb-3">
-
-<table style="width:50%">
-  <tr>
-    <th>Big_name</th>
-    <th>excel_name</th>
-  </tr>
-  <tr>
-    <td>company</td>
-    <td>
-      <select>
-       <option>select</option>
-      </select>
-    </td>
-  </tr>
-  <tr>
-    <td>first_name</td>
-      <td>
-            <select>
-              <option>
-                  <ul>
-                      {% for column in allcolumns %}
-                      <li>
-                          {{column}}
-                      </li>
-                      {% endfor %}
-                  </ul>
-              </option>
-          </select>
-      </td>
-  </tr>
-</table>
-   <hr>
-  <input type="file" name="filefield">
-  <input type="submit"  value="Upload">
+    <form action="/upload_file/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+        {% csrf_token %}
+      <div class="input-group mb-3">
+          <input type="file" name="filefield">
+          <input type="submit"  value="Upload">
+      </div>
+  </form>
 </div>
-</form>
-</div>
-
 <style>
-table, th, td {
-  border: 1px dotted black;
-}
   .container
     {
-      border: 3px dotted black;
-      background-color:#f5f5f7;
-      padding:80px 30px;
-      margin:0% 10%;
+      border: 5px solid  #RGBA;
+      background: rgba(0,0,0,0.5);
+      padding:40px 20px;
     }
 .headerbox
     {
@@ -62,7 +25,7 @@ table, th, td {
      padding:30px;
     }
  .main-head{
-    font-size: 50px;
+    font-size: 30px;
     text-transform: uppercase;
     color:#060910;
     }
