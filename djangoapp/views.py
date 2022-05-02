@@ -35,7 +35,7 @@ def read_file(request):
     address1 = request.POST['select-10']
     address_city = request.POST['select7']
     country_code = request.POST['select8']
-    address_fname = request.POST['select5'] 
+    address_fname = request.POST['select5']
     address_lname = request.POST['select9']
     postal_code = request.POST['select-11']
     state_or_province = request.POST['select-12']
@@ -64,3 +64,4 @@ def read_file(request):
         response = requests.request("POST", url, json=payload, headers=headers)
         print(response.text)
         return render(request, 'drop.html')
+
