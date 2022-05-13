@@ -40,7 +40,7 @@ def read_file(request):
 
     for index, row in a.iterrows():
         payload = [{
-            "company": row[company],
+            "company": row[company], 
             "first_name": row[first_name], 
             "last_name": row[last_name],
             "phone": str(row[phone]),
