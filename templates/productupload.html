@@ -6,10 +6,10 @@
 <div class="container">
     <form action="/productupload_file/" method="post" enctype="multipart/form-data" name="form1" id="form1">
         {% csrf_token %}
-      <div class="input-group mb-3">
+      <div class="input-group mb-3">  
           <input type="file"  name="filefield">
           <input type="submit"  value="Upload">
       </div>
-  </form> 
+  </form>  
 </div>
 {% endblock %} 

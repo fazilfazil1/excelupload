@@ -44,7 +44,7 @@ def read_file(request):
             "first_name": row[first_name], 
             "last_name": row[last_name],
             "phone": str(row[phone]),
-            "email": row[email],
+            "email": row[email], 
             "addresses": [
                   { 
                     "first_name": row[addresses_first],
