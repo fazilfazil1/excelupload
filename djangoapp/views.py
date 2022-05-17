@@ -1,20 +1,25 @@
+from urllib import request
+
 from django.shortcuts import render
 import pandas as pd
 import requests
 
 # Create your views here.
-
+# global variable
 a = ''
 
 
+# home page
 def index(request):
     return render(request, 'drop.html')
 
 
-def home(request, ):
+# customer upload page
+def customer(request):
     return render(request, 'index.html')
 
 
+# customer upload file read and mapping the excel heading column with bigcommerce name
 def upload_file(request):
     global a
     file = request.FILES['filefield']
@@ -23,6 +28,7 @@ def upload_file(request):
     return render(request, 'dropdown.html', {'allcolumns': list(df.columns)})
 
 
+# used to upload customer data to bigcommerce
 def read_file(request):
     url = "https://api.bigcommerce.com/stores/b5ajmj9rbq/v3/customers"
     company = request.POST['select0']
@@ -34,19 +40,19 @@ def read_file(request):
     address_city = request.POST['select7']
     country_code = request.POST['select8']
     addresses_first = request.POST['select5']
-    address_lname = request.POST['select9'] 
+    address_lname = request.POST['select9']
     postal_code = request.POST['select-11']
     state_or_province = request.POST['select-12']
 
     for index, row in a.iterrows():
         payload = [{
-            "company": row[company], 
-            "first_name": row[first_name], 
+            "company": row[company],
+            "first_name": row[first_name],
             "last_name": row[last_name],
             "phone": str(row[phone]),
-            "email": row[email], 
+            "email": row[email],
             "addresses": [
-                  { 
+                {
                     "first_name": row[addresses_first],
                     "city": row[address_city],
                     "country_code": row[country_code],
@@ -54,8 +60,8 @@ def read_file(request):
                     "address1": row[address1],
                     "postal_code": str(row[postal_code]),
                     "state_or_province": row[state_or_province],
-                  }
-                  ]
+                }
+            ]
         }]
 
         print(payload)
@@ -69,3 +75,116 @@ def read_file(request):
         print(response.text)
     return render(request, 'drop.html')
 
+
+# product upload page
+def product(request):
+    return render(request,'productupload.html')
+
+
+# used product file read and then upload to bigcommerce
+def uploadproduct_file(request):
+    file = request.FILES['filefield']
+    df = pd.read_excel(file, engine='openpyxl')
+    url = "https://api.bigcommerce.com/stores/b5ajmj9rbq/v3/catalog/products"
+    for index, row in df.iterrows():
+        payload = {
+            "name": row['Product Name'],
+            "sku": str(row['SKU']),
+            "type": row['Product Type'],
+            "price": row['Default Price'],
+            "weight": row['Weight '],
+            "description": row['Description'],
+            "width": row['Width'],
+            "depth": row['Depth'],
+            "height": row['Height'],
+            "cost_price": row['Cost'],
+            "retail_price": row['MSRP'],
+            "sale_price": row['Sale Price'],
+            "map_price": row['map_price'],
+            "tax_class_id": row['tax_class_id'],
+            "product_tax_code": row['product_tax_code'],
+            # "brand_id":row["brand_id"],
+            "inventory_level": row["inventory_level"],
+            "inventory_warning_level": row["inventory_warning_level"],
+            "inventory_tracking": row["inventory_tracking"],
+            "fixed_cost_shipping_price": row["fixed_cost_shipping_price"],
+            "is_free_shipping": row["is_free_shipping"],
+            "is_visible": row["is_visible"],
+            "is_featured": row["is_featured"],
+            "warranty": row["warranty"],
+            "bin_picking_number": row["bin_picking_number"],
+            "layout_file": row["layout_file"],
+            "upc": row["upc"],
+            "search_keywords": row["search_keywords"],
+            "availability": row["availability"],
+            "availability_description": row["availability_description"],
+            "gift_wrapping_options_type": row["gift_wrapping_options_type"],
+            "sort_order": row["sort_order"],
+            "condition": row["condition"],
+            "is_condition_shown": row["is_condition_shown"],
+            "order_quantity_minimum": row["order_quantity_minimum"],
+            "order_quantity_maximum": row["order_quantity_maximum"],
+            "page_title": row["page_title"],
+            "meta_keywords": [
+                row["meta_keywords"]
+            ],
+            "meta_description": row["meta_description"],
+            "view_count": row["view_count"],
+            "preorder_release_date": row["preorder_release_date"],
+            "preorder_message": row["preorder_message"],
+            "is_preorder_only": row["is_preorder_only"],
+            "is_price_hidden": row["is_price_hidden"],
+            "price_hidden_label": row["price_hidden_label"],
+            "open_graph_type": row["open_graph_type"],
+            "open_graph_title": row["open_graph_title"],
+            "open_graph_description": row["open_graph_description"],
+            "open_graph_use_meta_description": row["open_graph_use_meta_description"],
+            "open_graph_use_product_name": row["open_graph_use_product_name"],
+            "open_graph_use_image": row["open_graph_use_image"],
+            "brand_name or brand_id": row["brand_name or brand_id"],
+            "gtin": row['gtin'],
+            "mpn": row['mpn'],
+            "custom_fields": [
+                {
+                    # "id": row['id'],
+                    "name": row['Custom Field Name'],
+                    "value": row['Custom Field Value']
+                }
+            ]
+            ,
+            "bulk_pricing_rules": [
+                {
+                    # "id": row['bulkid'],
+                    "quantity_min": row['quantity_min'],
+                    "quantity_max": row['quantity_max'],
+                    "type": row['type'],
+                    "amount": row['amount']
+                }
+            ],
+            "images": [
+                {
+                    "is_thumbnail": True,
+                    "image_url": row['image_url'],
+                    "description": row['imagedescription']
+                }
+            ],
+            "videos": [
+                {
+                    "title": row["videotitle"],
+                    "description": row["videodescription"],
+                    "type": row["typevideo"],
+                }
+            ]
+        }
+
+        print(payload)
+
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-Auth-Token": "redptv84kmlgfed97l7jroa0mdknfgc"
+        }
+
+        response = requests.request("POST", url, json=payload, headers=headers)
+        print(response.text)
+    return render(request, 'drop.html')

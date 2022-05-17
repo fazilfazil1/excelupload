@@ -1,35 +1,18 @@
 {% extends 'base.html' %}
 {% block content %}
+<!--customer upload view page-->
 <div class="headerbox">
-    <h3 class="main-head"> Upload your excel file here</h3>
+    <h3 class="main-head"> Upload your customer excel file here</h3>
 </div>
 <div class="container">
     <form action="/upload_file/" method="post" enctype="multipart/form-data" name="form1" id="form1">
         {% csrf_token %}
       <div class="input-group mb-3">
-          <input type="file"  name="filefield"> 
+          <input type="file"  name="filefield">
           <input type="submit"  value="Upload">
-      </div> 
+      </div>
   </form>
 </div>
-<style>
-  .container
-    {
-      border: 5px solid  #RGBA;
-      background: rgba(0,0,0,0.5);
-      padding:40px 20px;
-    }
-.headerbox
-    {
-     text-align:center;
-     padding:30px;
-    }
- .main-head{
-    font-size: 30px;
-    text-transform: uppercase; 
-    color:#060910;
-    }
-</style>
 {% endblock %}
 
 

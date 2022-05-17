@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+<!--product upload view page-->
 <div class="headerbox">
     <h3 class="main-head"> Upload your product excel file here</h3>
 </div>
 <div class="container">
-    <form action="/productupload_file/" method="post" enctype="multipart/form-data" name="form1" id="form1">
+    <form action="/uploadproduct_file/" method="post" enctype="multipart/form-data" name="form1" id="form1">
         {% csrf_token %}
       <div class="input-group mb-3">  
           <input type="file"  name="filefield">
