@@ -78,7 +78,7 @@ def read_file(request):
 
 # product upload page
 def product(request):
-    return render(request,'productupload.html')
+    return render(request, 'productupload.html')
 
 
 # used product file read and then upload to bigcommerce
@@ -188,3 +188,46 @@ def uploadproduct_file(request):
         response = requests.request("POST", url, json=payload, headers=headers)
         print(response.text)
     return render(request, 'drop.html')
+
+
+# order upload page
+def order(request):
+    return render(request, 'orderupload.html')
+
+#used to read order file and upload  to bigcommerce
+def uploadorder_file(request):
+    file = request.FILES['filefield']
+    df = pd.read_excel(file, engine='openpyxl')
+    url = " https://api.bigcommerce.com/stores/b5ajmj9rbq/v2/orders"
+    for index, row in df.iterrows():
+        payload = {
+            "billing_address": {
+                "first_name": row["first_name"],
+                "last_name": row["last_name"],
+                "street_1": row["Streename"],
+                "city": row["city"],
+                "state": row["state"],
+                "zip": row["zip"],
+                "country": row["country"],
+                "country_iso2": row["country_iso2"],
+                "email": row["email"]
+            },
+            "products": [
+                {
+                    "name": row["name"],
+                    "quantity": row["quantity"],
+                    "price_inc_tax": row["price_inc_tax"],
+                    "price_ex_tax": row["price_ex_tax"]
+                }
+            ]
+        }
+        print(payload)
+        headers = {
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+            "X-Auth-Token": "redptv84kmlgfed97l7jroa0mdknfgc"
+        }
+        response = requests.request("POST", url, json=payload, headers=headers)
+        print(response.text)
+    return render(request,'drop.html')
+
