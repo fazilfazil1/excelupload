@@ -108,9 +108,9 @@ def uploadproduct_file(request):
             "inventory_warning_level": row["inventory_warning_level"],
             "inventory_tracking": row["inventory_tracking"],
             "fixed_cost_shipping_price": row["fixed_cost_shipping_price"],
-            "is_free_shipping": row["is_free_shipping"],
-            "is_visible": row["is_visible"],
-            "is_featured": row["is_featured"],
+            "is_free_shipping": bool(row["is_free_shipping"]),
+            "is_visible": bool(row["is_visible"]),
+            "is_featured": bool(row["is_featured"]),
             "warranty": row["warranty"],
             "bin_picking_number": row["bin_picking_number"],
             "layout_file": row["layout_file"],
@@ -121,7 +121,7 @@ def uploadproduct_file(request):
             "gift_wrapping_options_type": row["gift_wrapping_options_type"],
             "sort_order": row["sort_order"],
             "condition": row["condition"],
-            "is_condition_shown": row["is_condition_shown"],
+            "is_condition_shown": bool(row["is_condition_shown"]),
             "order_quantity_minimum": row["order_quantity_minimum"],
             "order_quantity_maximum": row["order_quantity_maximum"],
             "page_title": row["page_title"],
@@ -132,26 +132,40 @@ def uploadproduct_file(request):
             "view_count": row["view_count"],
             "preorder_release_date": row["preorder_release_date"],
             "preorder_message": row["preorder_message"],
-            "is_preorder_only": row["is_preorder_only"],
-            "is_price_hidden": row["is_price_hidden"],
+            "is_preorder_only": bool(row["is_preorder_only"]),
+            "is_price_hidden": bool(row["is_price_hidden"]),
             "price_hidden_label": row["price_hidden_label"],
             "open_graph_type": row["open_graph_type"],
             "open_graph_title": row["open_graph_title"],
             "open_graph_description": row["open_graph_description"],
-            "open_graph_use_meta_description": row["open_graph_use_meta_description"],
-            "open_graph_use_product_name": row["open_graph_use_product_name"],
-            "open_graph_use_image": row["open_graph_use_image"],
+            "open_graph_use_meta_description": bool(row["open_graph_use_meta_description"]),
+            "open_graph_use_product_name": bool(row["open_graph_use_product_name"]),
+            "open_graph_use_image": bool(row["open_graph_use_image"]),
             "brand_name or brand_id": row["brand_name or brand_id"],
             "gtin": row['gtin'],
             "mpn": row['mpn'],
             "custom_fields": [
                 {
                     # "id": row['id'],
-                    "name": row['Custom Field Name'],
-                    "value": row['Custom Field Value']
+                    "name": row['Custom Field Name1'],
+                    "value": row['Custom Field Value1']
+                },
+                {
+                    # "id": row['id'],
+                    "name": row['Custom Field Name2'],
+                    "value": row['Custom Field Value2']
+                },
+                {
+                    # "id": row['id'],
+                    "name": row['Custom Field Name3'],
+                    "value": row['Custom Field Value3']
+                },
+                {
+                    # "id": row['id'],
+                    "name": row['Custom Field Name4'],
+                    "value": row['Custom Field Value4']
                 }
-            ]
-            ,
+            ],
             "bulk_pricing_rules": [
                 {
                     # "id": row['bulkid'],
