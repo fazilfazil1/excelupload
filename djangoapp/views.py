@@ -1,5 +1,4 @@
 from urllib import request
-
 from django.shortcuts import render
 import pandas as pd
 import requests
@@ -208,7 +207,8 @@ def uploadproduct_file(request):
 def order(request):
     return render(request, 'orderupload.html')
 
-#used to read order file and upload  to bigcommerce
+
+# used to read order file and upload  to bigcommerce
 def uploadorder_file(request):
     file = request.FILES['filefield']
     df = pd.read_excel(file, engine='openpyxl')
@@ -243,5 +243,4 @@ def uploadorder_file(request):
         }
         response = requests.request("POST", url, json=payload, headers=headers)
         print(response.text)
-    return render(request,'drop.html')
-
+    return render(request, 'drop.html')
