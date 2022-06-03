@@ -81,31 +81,41 @@ def product(request):
 
 
 # used product file read and then upload to bigcommerce
+
+# jsonData1 = {}
+#
+# jsonData1['name'] = row["Product Name"]
+# jsonData1['sku'] = str(row['SKU'])
+# jsonData1['type'] = row['Product Type']
+# jsonData1['price'] = row['Default Price']
+# jsonData1['weight'] = row['Weight ']
+# jsonData1['description'] = row['Description']
+# jsonData1['width'] = row['Width']
+# jsonData1['depth'] = row['Depth']
+# jsonData1['height'] = row['Height']
+# jsonData1['cost_price'] = row['Cost']
+# jsonData1['retail_price'] = row['MSRP']
+# jsonData1['sale_price'] = row['Sale Price']
+# jsonData1['map_price'] = row['map_price']
+# jsonData1['tax_class_id'] = row['tax_class_id']
+# jsonData1['product_tax_code'] = row['product_tax_code']
+# # jsonData1['brand_id'] = row['brand_id']
+# jsonData1['inventory_level'] = row['inventory_level']
+# jsonData1['inventory_warning_level'] = row['inventory_warning_level']
+# jsonData1['inventory_tracking']=row['inventory_tracking']
+# jsonData1['fixed_cost_shipping_price'] = row['fixed_cost_shipping_price']
+# jsonData1['is_free_shipping'] = row['is_free_shipping']
+# jsonData1['is_visible'] = row['is_visible']
+# jsonData1['is_featured']
+
+
+
 def uploadproduct_file(request):
     file = request.FILES['filefield']
     df = pd.read_excel(file, engine='openpyxl')
     url = "https://api.bigcommerce.com/stores/b5ajmj9rbq/v3/catalog/products"
     for index, row in df.iterrows():
         payload = {
-            "name": row['Product Name'],
-            "sku": str(row['SKU']),
-            "type": row['Product Type'],
-            "price": row['Default Price'],
-            "weight": row['Weight '],
-            "description": row['Description'],
-            "width": row['Width'],
-            "depth": row['Depth'],
-            "height": row['Height'],
-            "cost_price": row['Cost'],
-            "retail_price": row['MSRP'],
-            "sale_price": row['Sale Price'],
-            "map_price": row['map_price'],
-            "tax_class_id": row['tax_class_id'],
-            "product_tax_code": row['product_tax_code'],
-            # "brand_id":row["brand_id"],
-            "inventory_level": row["inventory_level"],
-            "inventory_warning_level": row["inventory_warning_level"],
-            "inventory_tracking": row["inventory_tracking"],
             "fixed_cost_shipping_price": row["fixed_cost_shipping_price"],
             "is_free_shipping": bool(row["is_free_shipping"]),
             "is_visible": bool(row["is_visible"]),
