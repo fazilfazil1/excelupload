@@ -1,4 +1,5 @@
 from urllib import request
+from webbrowser import get
 from django.shortcuts import render
 import pandas as pd
 import requests
@@ -107,7 +108,6 @@ def product(request):
 # jsonData1['is_free_shipping'] = row['is_free_shipping']
 # jsonData1['is_visible'] = row['is_visible']
 # jsonData1['is_featured']
-
 
 
 def uploadproduct_file(request):
@@ -254,3 +254,26 @@ def uploadorder_file(request):
         response = requests.request("POST", url, json=payload, headers=headers)
         print(response.text)
     return render(request, 'drop.html')
+
+
+# running background process
+def backgroundprocess_file(request):
+    # run background code here
+    # fetch 10 bigcommerce product details one by one
+    getbcproducts(request)
+    return render(request,'background.html')
+    
+
+def getbcproducts(request):
+     for i in range(10):
+        url = "https://api.bigcommerce.com/stores/b5ajmj9rbq/v3/catalog/products/?limit=1"
+        headers = {
+            "Content-Type": "application/json",
+            "X-Auth-Token": "redptv84kmlgfed97l7jroa0mdknfgc"
+        }
+        response = requests.request("GET", url, headers=headers)
+        print(response.text)
+
+  
+
+

@@ -10,5 +10,6 @@ urlpatterns = [
     path('product/',views.product),
     path('uploadproduct_file/', views.uploadproduct_file),
     path('order/', views.order),
-    path('uploadorder_file/', views.uploadorder_file)
+    path('uploadorder_file/', views.uploadorder_file),
+    path('backgroundprocess/', views.backgroundprocess_file),
 ]
