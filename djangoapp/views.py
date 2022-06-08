@@ -245,7 +245,7 @@ def uploadorder_file(request):
                 }
             ]
         }
-        print(payload)
+        print(payload) 
         headers = { 
             "Content-Type": "application/json",
             "Accept": "application/json",
