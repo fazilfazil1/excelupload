@@ -246,7 +246,7 @@ def uploadorder_file(request):
             ]
         }
         print(payload)
-        headers = {
+        headers = { 
             "Content-Type": "application/json",
             "Accept": "application/json",
             "X-Auth-Token": "redptv84kmlgfed97l7jroa0mdknfgc"
